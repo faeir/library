@@ -41,5 +41,40 @@
 도서 목록 전체를 보여주고 필요에 따라 카테고리별로 볼 수 있으며 검색기능을 넣어 사용자의 편의를 고려했다.  
 
 
-![도서상세](https://user-images.githubusercontent.com/100394667/237060338-a4a9e917-0967-4ac1-9449-541838545663.jpg)
+![소스코드1](https://github.com/faeir/library/assets/100394667/d85194f1-5011-49f7-ac7d-826c32d07461)
+![소스코드3](https://github.com/faeir/library/assets/100394667/1428d960-ea19-419e-8b36-6adc771ddaeb)
+
+
+도서 목록 및 검색 소스코드
+
+
+![도서상세](https://user-images.githubusercontent.com/100394667/237060338-a4a9e917-0967-4ac1-9449-541838545663.jpg)   
+
+
+
+각 도서를 클릭하면 책 제목을 기반으로한 상세 데이터를 가져오고 사용자에게 보여준다. 대여하기 버튼으로 해당 도서를 대여할 수 있으며 대여가 불가능한 경우에는 대여하기 버튼이 나타나지 않는다  
+
+
+![소스코드4](https://github.com/faeir/library/assets/100394667/c29a4fbc-5409-44f3-bb32-8e26a96375b0)
+
+
+도서 상세 소스코드
+
+
+![소스코드5](https://github.com/faeir/library/assets/100394667/8c957e74-9200-45e9-b831-80d6a29ccfbf)  
+
+
+대여하기 기능 소스코드
+
+
+
 ![지도](https://user-images.githubusercontent.com/100394667/237060309-080094f0-546f-496e-ba78-54289d4e4329.jpg)
+
+
+지도 API를 이용하여 도서관에 대한 정보를 간략하게 제공
+
+
+
+
+
+
