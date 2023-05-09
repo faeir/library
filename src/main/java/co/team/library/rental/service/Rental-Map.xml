@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.team.library.rental.service.RentalMapper">
+	<select id="allMemberRentalList" resultType="co.team.library.rental.vo.RentalVO">
+		SELECT * FROM ORDER BY RENTALDATE DESC
+	</select>
+	
+	<select id="myRentalList" parameterType="String" resultType="co.team.library.rental.vo.RentalVO">
+		SELECT ID, A.BOOKTITLE AS BOOKTITLE, RENTALDATE, RETURNDATE, RETURNORNOT
+		FROM BOOKLIST A INNER JOIN RENTAL B
+		ON A.BOOKCODE = B.BOOKCODE
+		WHERE ID = #{id}
+		ORDER BY RENTALDATE DESC
+	</select>
+	
+	<select id="nowRentalList" parameterType="String" resultType="co.team.library.rental.vo.RentalVO">
+		<![CDATA[
+		SELECT ID, A.BOOKTITLE AS BOOKTITLE, RENTALDATE, RETURNDATE, RETURNORNOT
+		FROM BOOKLIST A INNER JOIN RENTAL B
+		ON A.BOOKCODE = B.BOOKCODE
+		WHERE ID = #{id}
+		AND B.RENTALDATE <= SYSDATE
+        AND B.RETURNORNOT != 1	
+        ORDER BY RENTALDATE DESC
+        ]]>
+	
+	</select>
+
+	<select id="memberRentalList"
+		resultType="co.team.library.rental.vo.RentalVO">
+
+	      SELECT *
+      FROM (
+      SELECT ROWNUM RN, A.*
+      FROM (
+      SELECT r.id as id, r.bookcode as bookCode, l.bookTitle as bookTitle, r.rentaldate as rentaldate, r.returndate as returndate, r.returnornot as returnornot
+       FROM RENTAL r 
+       join bookList l
+       on r.bookcode = l.bookcode       
+       ORDER BY RENTALDATE ASC
+      ) A
+      )
+      WHERE RN BETWEEN #{start} AND #{end}
+      ORDER BY RENTALDATE DESC
+	</select>
+
+	<select id="boardListCount3" resultType="int">
+		SELECT COUNT(*) FROM
+		RENTAL
+	</select>
+	
+	<insert id="rentalBook" parameterType="co.team.library.book.vo.BookVO">
+		insert into rental values(#{id}, #{bookCode}, sysdate, sysdate+7, DEFAULT)
+		
+	</insert>
+	
+</mapper>
